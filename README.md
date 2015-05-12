@@ -10,7 +10,7 @@ Prerequisites:
 
 
 ### Running
-Execute  `> npm socialapi.js`.
+Execute  `node socialapi.js`.
 
 Point your browser to  `http://localhost:8080`.
 
