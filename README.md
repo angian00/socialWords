@@ -3,13 +3,16 @@
 A simple draft of social API.
 
 ### Installation
-Prerequisites: basic Node.js installation.
-git clone the whole repository. From the root of the project, run node install.
+Prerequisites:
+- basic Nodejs installation.
+- `git clone` the whole repository.
+- From the root of the project, run  `npm install`.
 
 
 ### Running
-Execute > node socialapi.js
-Point your browser to http://localhost:8080.
+Execute  `> npm socialapi.js`.
+
+Point your browser to  `http://localhost:8080`.
 
 
 ### API
