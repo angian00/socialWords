@@ -1,0 +1,71 @@
+Milestones
+-----------------
+- v0.0
+	- github project
+
+- v0.1
+	- skeleton:
+		- splash screen
+		- disclaimer
+	- text user cloud
+
+- v0.2
+	- basic auth
+	- text messenger view
+
+
+
+Single Features
+-----------------
+
+- views
+	- splash screen + login
+	- disclaimer
+	- user cloud
+	- messenger
+		- contacts
+		- messages
+
+- random avatars
+- profile tags (interests)
+- profile tags (interests)
+- reporting users
+- dummy user generator
+- authentication:
+	- registration
+	- 3rd-party auth
+
+
+Admin
+------------
+
+- configurare progetto GitHub
+
+M scegliere soluzione di hosting
+- scrivere script di deploy (se necessario)
+- scrivere dipendenze lato client (bower)
+
+
+Back-end
+------------
+
+v creare tabelle sql (user, message, contact)
+- implementare servizi rest
+	- users
+		v list
+		v get
+		x post
+		- put
+		- delete
+
+	- messages
+		- listByUser(direction)
+		- get
+		- post
+		- put
+		- delete
+
+	- contacts
+
+v autenticaz/autorizz
+- creazione nuovi utenti
