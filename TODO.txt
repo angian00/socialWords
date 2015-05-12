@@ -1,13 +1,13 @@
 Milestones
 -----------------
-- v0.0
-	- github project
-
 - v0.1
 	- skeleton:
 		- splash screen
 		- disclaimer
 	- text user cloud
+	- integrate jade templating engine
+	- integrate bootstrap
+
 
 - v0.2
 	- basic auth
@@ -18,6 +18,8 @@ Milestones
 Single Features
 -----------------
 
+- integrate jade templating engine
+
 - views
 	- splash screen + login
 	- disclaimer
@@ -27,6 +29,8 @@ Single Features
 		- messages
 
 - random avatars
+	https://github.com/Legify/Legicon
+
 - profile tags (interests)
 - profile tags (interests)
 - reporting users
@@ -35,11 +39,10 @@ Single Features
 	- registration
 	- 3rd-party auth
 
+- i18n
 
 Admin
 ------------
-
-- configurare progetto GitHub
 
 M scegliere soluzione di hosting
 - scrivere script di deploy (se necessario)
@@ -49,8 +52,7 @@ M scegliere soluzione di hosting
 Back-end
 ------------
 
-v creare tabelle sql (user, message, contact)
-- implementare servizi rest
+- implement REST services
 	- users
 		v list
 		v get
@@ -67,5 +69,5 @@ v creare tabelle sql (user, message, contact)
 
 	- contacts
 
-v autenticaz/autorizz
-- creazione nuovi utenti
+v 3rd party auth
+- registration

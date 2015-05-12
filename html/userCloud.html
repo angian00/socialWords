@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>SocialWords</title>
+		<style>
+			#svgContainer {
+				width: 1200px;
+				height: 800px;
+				
+				position: absolute;
+				top: 0;
+				left: 0;
+				z-index: -1;
+			}
+
+			.chart {
+  				fill-opacity: .6;
+  				fill: #e377c2;
+			}
+
+			#viewChooser {
+				width: 250px;
+				text-align: right;
+			}
+
+			#viewChooser fieldset {
+				display:inline-block;
+			}
+		</style>
+	</head>
+
+	<body>
+		<h2>User Cloud</h2>
+		<span id="viewChooser">
+			<fieldset>
+				<legend>Choose a view:</legend>
+		     	<input type="radio" name="user-view-choice" id="radio-choice-1" value="userCloud" checked="checked" />
+		     	<label for="radio-choice-1">User Cloud</label>
+		
+		     	<input type="radio" name="user-view-choice" id="radio-choice-2" value="messenger" />
+		     	<label for="radio-choice-2">Messenger</label>
+		    </fieldset>
+		</span>
+
+
+		<div id="svgContainer" width="1200" height="800"></div>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src="sw-usercloud.js"></script>
+	</body>
+</html>
