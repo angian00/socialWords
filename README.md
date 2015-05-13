@@ -5,6 +5,11 @@ A simple draft of social API.
 ### Installation
 Prerequisites:
 - basic Nodejs installation.
+- The avatar generation script needs the following native packages:
+	- libcairo2-dev (`sudo apt-get install libcairo2-dev`)
+	- libpango1.0-dev
+	- libjpeg-dev
+	- libgif-dev
 - `git clone` the whole repository.
 - From the root of the project, run  `npm install`.
 

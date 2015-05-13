@@ -1,0 +1,6 @@
+{
+  "host"     : "localhost",
+  "user"     : "nodejs",
+  "password" : "nodejs123",
+  "database" : "social"
+}

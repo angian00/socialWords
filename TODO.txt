@@ -28,9 +28,6 @@ Single Features
 		- contacts
 		- messages
 
-- random avatars
-	https://github.com/Legify/Legicon
-
 - profile tags (interests)
 - profile tags (interests)
 - reporting users

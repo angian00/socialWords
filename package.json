@@ -7,9 +7,13 @@
 		"body-parser": "*",
 		"method-override": "*",
 		"errorhandler": "*",
+		"jade": "*",
 
 		"passport": "*",
 		"passport-http": "*"
+	},
 
+	"optionalDependencies": {
+		"legicon": "*"
 	}
 }

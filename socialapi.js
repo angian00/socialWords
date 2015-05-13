@@ -1,8 +1,10 @@
 var SERVER_PORT = 8080;
 
 var application_root = __dirname;
-var express = require("express");
+
+var fs = require("fs");
 var path = require("path");
+var express = require("express");
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
@@ -13,20 +15,10 @@ var passport = require("passport");
 var BasicStrategy = require('passport-http').BasicStrategy;
 
 
+var pool  = initPool();
+
+
 var app = express();
-
-
-//attach to db
-var mysql      = require('mysql');
-//var conn = mysql.createConnection({
-var pool  = mysql.createPool({
-  connectionLimit : 10,
-  host     : 'localhost',
-  user     : 'nodejs',
-  password : 'nodejs123',
-  database : 'social'
-});
-
 
 // app config
 app.use(bodyParser.json());   
@@ -34,7 +26,10 @@ app.use(methodOverride());
 app.use(errorHandler({ dumpExceptions: true, showStack: true }));
 app.use(passport.initialize());
 //app.use(passport.authenticate('basic', { session: false }), express.static(path.join(application_root, "app")));
-app.use(express.static(path.join(application_root, "html")));
+app.use(express.static(path.join(application_root, "public")));
+
+app.set('views', path.join(application_root, 'views'));
+app.set('view engine', 'jade');
 
 
 //passport config
@@ -58,8 +53,11 @@ passport.use(new BasicStrategy(
 //default page
 app.get('/', function(req, res) {
     //res.sendfile('home.html', { root: __dirname + "/relative_path_of_file" } );
-    res.sendfile('index.html');
+    //res.sendfile('index.html');
+	res.render('index', { pageTitle: 'Home' });
 });
+
+
 
 //endpoints
 app.post('/login', function(req, res, next) {
@@ -148,6 +146,16 @@ console.log("Launching server on port: " + SERVER_PORT);
 var server = http.createServer(app);
 server.listen(SERVER_PORT);
 
+
+
+
+//attach to db
+function initPool() {
+	var jsonStr = fs.readFileSync(path.join(application_root, "connProps.json"));
+	var connProps = JSON.parse(jsonStr);
+	//return mysql.createConnection({
+	return mysql.createConnection(connProps);
+}
 
 function publicUserFields(user) {
 	//expose only public fields
