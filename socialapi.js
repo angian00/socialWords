@@ -54,7 +54,20 @@ passport.use(new BasicStrategy(
 app.get('/', function(req, res) {
     //res.sendfile('home.html', { root: __dirname + "/relative_path_of_file" } );
     //res.sendfile('index.html');
-	res.render('index', { pageTitle: 'Home' });
+    res.redirect('/login');
+});
+
+app.get('/login', function(req, res) {
+	res.render('index', { pageTitle: 'Login', isLogin: true });
+});
+
+app.get('/register', function(req, res) {
+	res.render('index', { pageTitle: 'Register', isLogin: false });
+});
+
+
+app.get('/userHome', function(req, res) {
+	res.render('userHome', { pageTitle: 'angian', username: 'angian' });
 });
 
 

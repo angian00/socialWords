@@ -1,0 +1,51 @@
+extend layout
+
+block variables
+	- var splash = false
+
+block page-content
+	.container
+		ul.nav.nav-pills.navbar-right
+			li
+				a(href='#') User Cloud 
+			li.active
+				a(href='#') Messenger
+
+		h1 #{username}
+		.row
+			.col-md-3
+				//h3 Contacts
+				.panel.panel-default
+					.panel-heading Contacts
+					ul.list-group
+						a.list-group-item
+							span.badge 2
+							| realmat
+						a.list-group-item
+							span.badge 1
+							| srini
+						a.list-group-item.active
+							| iban
+
+			.col-md-9
+				h2 
+					img(src='/images/avatars/iban.png').avatar
+					| iban
+
+				.container
+					.row
+						.col-md-5
+							.panel.panel-default
+								.panel-body Messaggio di prova
+
+					.row
+						.col-md-7
+						.col-md-5
+							.panel.panel-default
+								.panel-body Ottimo messaggio, bravo!
+
+					.row
+						.col-md-5
+							.panel.panel-default
+								.panel-body Anche tu non sei male... :-)
+

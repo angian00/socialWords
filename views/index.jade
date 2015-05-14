@@ -2,21 +2,37 @@ extend layout
 
 block variables
 	- var splash = true
+	- var splash = true
 
 block page-content
-	.inner.splash
-		//img(src='/images/logo.png', width='240')
-		h1 Social Words
-		p.lead A minimalist Social Network
+	.container
+		ul.nav.nav-pills.navbar-right
+			li.active
+				a(href='/login') Log in
+			li
+				a(href='/register') Register
 
-	form.form-signin
-		label(for='inputEmail').sr-only email address
-		input(type='email', placeholder='email address', required, autofocus)#inputEmail.form-control
-		label(for='inputPassword').sr-only password
-		input(type='password', placeholder='password', required)#inputPassword.form-control
-		.checkbox
-			label
-				input(type='checkbox', value='remember-me')
-				| Remember me
+		.row
+			.inner
+				//img(src='/images/logo.png', width='240')
+				h1 Social Words
+				p.lead A minimalist Social Network
 
-		button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+			block signin-form
+			
+			form.form-signin(action=isLogin ? '/userHome' : 'confirmRegistration')
+				if !isLogin
+					label(for='inputUsername').sr-only username
+					input(type='text', placeholder='username', required)#inputUsername.form-control
+
+				label(for='inputEmail').sr-only email address
+				input(type='email', placeholder='email address', required, autofocus)#inputEmail.form-control
+				label(for='inputPassword').sr-only password
+				input(type='password', placeholder='password', required)#inputPassword.form-control
+				if isLogin
+					.checkbox
+						label
+							input(type='checkbox', value='remember-me')
+							| Remember me
+
+				button.btn.btn-lg.btn-primary.btn-block(type='submit')= isLogin ? 'Sign in' : 'Register'
