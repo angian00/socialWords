@@ -7,6 +7,9 @@ var mysql = require("mysql");
 var legicon = require('legicon');
 
 
+
+var avatarSubdir = 'public/images/avatars';
+
 var conn;
 
 
@@ -32,7 +35,7 @@ function generateAllAvatars() {
 
 		rows.forEach(function(row) {
 			var pngStream = legicon(row.nickname).pngStream();
-			var outStream = fs.createWriteStream(path.join(application_root, "avatars", row.nickname + ".png"));
+			var outStream = fs.createWriteStream(path.join(application_root, avatarSubdir, row.nickname + ".png"));
 			
 			pngStream.on('data', function(chunk) {
 				outStream.write(chunk);

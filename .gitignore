@@ -1,9 +1,7 @@
-avatars/*
+public/images/avatars/*.png
 
 
-
-
-#----------
+#---- generated ----
 # Logs
 logs
 *.log

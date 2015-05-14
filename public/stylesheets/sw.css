@@ -1,4 +1,4 @@
-html.withImage {
+html.splash {
     background: url('/images/people.jpg') no-repeat center center fixed; 
     background-size: cover;
 }
@@ -9,6 +9,17 @@ body {
   background: none;
 }
 
+html.splash body {
+  color: #fff;
+}
+
+img.avatar {
+  width: 30px;
+  height: 30px;
+  margin: 2px 10px 2px 2px;
+  background: #ffffff;
+}
+
 
 .container {
   width: 100%;
@@ -17,11 +28,6 @@ body {
 .inner {
   text-align: center;
   padding: 30px;
-}
-
-
-.splash {
-  color: #fff;
 }
 
 footer {
