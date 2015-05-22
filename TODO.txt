@@ -2,11 +2,11 @@ Milestones
 -----------------
 - v0.1
 	- skeleton:
-		- splash screen
+		v splash screen
 		- disclaimer
 	- text user cloud
-	- integrate jade templating engine
-	- integrate bootstrap
+	v integrate jade templating engine
+	v integrate bootstrap
 
 
 - v0.2
@@ -14,14 +14,17 @@ Milestones
 	- text messenger view
 
 
+Bugs
+-----------------
+- basic authentication: refresh, failure
+- $location.path()
+
+
 
 Single Features
 -----------------
 
-- integrate jade templating engine
-
 - views
-	- splash screen + login
 	- disclaimer
 	- user cloud
 	- messenger

@@ -43,7 +43,7 @@ passport.use(new BasicStrategy(
 
 			if ((rows.length == 0) || password != rows[0].password)  { return done(null, false); }
 
-			return done(null, rows[0]);
+			return done(null, privateUserFields(rows[0]));
 		});
 	}
 ));
@@ -66,26 +66,34 @@ app.get('/register', function(req, res) {
 });
 
 
-app.get('/userHome', function(req, res) {
-	res.render('userHome', { pageTitle: 'angian', username: 'angian' });
+app.get('/userHome', 
+	passport.authenticate('basic', { session: false }),
+	function(req, res) {
+		res.render('userHome', { pageTitle: req.user.nickname, user: req.user });
 });
 
 
 
 //endpoints
-app.post('/login', function(req, res, next) {
-	passport.authenticate('basic', { session: false }, function(err, user, info) {
-    if (err) {
-    	return next(err); // will generate a 500 error
-    }
+// app.post('/auth', function(req, res, next) {
+// 	passport.authenticate('basic', { session: false }, function(err, user, info) {
+//     if (err) {
+//     	return next(err); // will generate a 500 error
+//     }
 
-    if (!user) {
-    	return res.send({ success : false, message : 'Authentication failed' });
-    }
+//     if (!user) {
+//     	return res.send({ success : false, message : 'Authentication failed' });
+//     }
 
-    return res.send({ success : true, message : 'Welcome!' });
-  })(req, res, next);
+//     return res.send({ success : true, message : 'Welcome!' });
+//   })(req, res, next);
+// });
+app.post('/auth', 
+	passport.authenticate('basic', { session: false }),
+	function (req, res) {
+    	return res.send({ success : true, message : 'Welcome!' });
 });
+
 
 
 app.get('/api', 
@@ -152,6 +160,32 @@ app.get('/api/users/:userId',
 	});
 });
 
+
+app.get('/api/contacts',
+	passport.authenticate('basic', { session: false }),	
+	function (req, res) {
+		return pool.query('select u.id, u.nickname, count(distinct m.id) as nUnread '
+			+ 'from user u, contact c left join message m on c.contact_id=m.from_id and c.owner_id = m.to_id '
+			+ 'where c.owner_id=' + pool.escape(req.user.id) + ' and u.id = c.contact_id '
+			+ 'and m.read_ts is null '
+			+ 'group by u.id, u.nickname order by c.favorite desc',
+
+			function(err, rows, fields) {
+				if (err) {
+					return console.log(err);
+				} else {
+					var result = Array();
+					for (var i = 0; i < rows.length; i++) {
+						var resItem = publicUserFields(rows[i]);
+						resItem.nUnread = rows[i].nUnread;
+
+						result.push(resItem);
+					}
+	    			
+	    			return res.send(result);
+				}
+			});
+});
 
 
 // Launch server

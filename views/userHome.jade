@@ -4,28 +4,33 @@ block variables
 	- var splash = false
 
 block page-content
-	.container
+	.container(ng-controller='UserHomeCtrl', ng-init="viewer=#{JSON.stringify(user)}")
 		ul.nav.nav-pills.navbar-right
 			li
-				a(href='#') User Cloud 
+				a(href='#') User Cloud
 			li.active
 				a(href='#') Messenger
 
-		h1 #{username}
+		h1 #{user.nickname}
 		.row
 			.col-md-3
 				//h3 Contacts
 				.panel.panel-default
 					.panel-heading Contacts
 					ul.list-group
-						a.list-group-item
-							span.badge 2
-							| realmat
-						a.list-group-item
-							span.badge 1
-							| srini
-						a.list-group-item.active
-							| iban
+						//a.list-group-item
+							//span.badge 2
+							//| realmat
+						//a.list-group-item
+							//span.badge 1
+							//| srini
+						//a.list-group-item.active
+							//| iban
+
+						a.list-group-item(ng-repeat='contact in contacts')
+							span.badge(ng-if="contact.nUnread > 0") 
+								| {{contact.nUnread}}
+							| {{contact.nickname}}
 
 			.col-md-9
 				h2 

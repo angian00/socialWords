@@ -15,7 +15,7 @@ CREATE TABLE user (
 	last_name VARCHAR(50) NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	password VARCHAR(20) NOT NULL,
-	last_login_ts TIMESTAMP,
+	last_login_ts TIMESTAMP NULL,
 
 	PRIMARY KEY (id)
 );
@@ -27,8 +27,8 @@ CREATE TABLE message (
 	from_id BIGINT NOT NULL,
 	to_id BIGINT NOT NULL,
 	body VARCHAR(500) NOT NULL,
-	sent_ts TIMESTAMP,
-	read_ts TIMESTAMP,
+	sent_ts TIMESTAMP NULL,
+	read_ts TIMESTAMP NULL,
 
 	PRIMARY KEY (id),
 	CONSTRAINT fk_from_id FOREIGN KEY (from_id) REFERENCES user(id),
@@ -41,7 +41,7 @@ CREATE TABLE contact (
 	contact_id BIGINT NOT NULL,
 	blacklisted BOOLEAN,
 	favorite BOOLEAN,
-	added_ts TIMESTAMP,
+	added_ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	notes	VARCHAR(200),
 
 	PRIMARY KEY (owner_id, contact_id),

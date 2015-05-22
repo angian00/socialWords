@@ -18,21 +18,24 @@ block page-content
 				h1 Social Words
 				p.lead A minimalist Social Network
 
-			block signin-form
-			
-			form.form-signin(action=isLogin ? '/userHome' : 'confirmRegistration')
+			//form.form-signin(action=isLogin ? '/userHome' : 'confirmRegistration')
+			form.form-signin(role='form', ng-controller='LoginCtrl')
 				if !isLogin
-					label(for='inputUsername').sr-only username
-					input(type='text', placeholder='username', required)#inputUsername.form-control
+					label(for='inputUsername').sr-only nickname
+					input(type='text', placeholder='nickname', required)#inputUsername.form-control
 
+				.alert.alert-danger(ng-show="error")
+					| {{error}}
 				label(for='inputEmail').sr-only email address
-				input(type='email', placeholder='email address', required, autofocus)#inputEmail.form-control
+				input(type='email', placeholder='email address', required, autofocus, ng-model='email')#inputEmail.form-control
 				label(for='inputPassword').sr-only password
-				input(type='password', placeholder='password', required)#inputPassword.form-control
-				if isLogin
-					.checkbox
-						label
-							input(type='checkbox', value='remember-me')
-							| Remember me
+				input(type='password', placeholder='password', required, ng-model='password')#inputPassword.form-control
+				//if isLogin
+					//.checkbox
+					//	label
+					//		input(type='checkbox', value='remember-me')
+					//		| Remember me
 
-				button.btn.btn-lg.btn-primary.btn-block(type='submit')= isLogin ? 'Sign in' : 'Register'
+				button.btn.btn-lg.btn-primary.btn-block(type='button', ng-click='login()')= isLogin ? 'Sign in' : 'Register'
+
+				img(ng-if="dataLoading", src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==")

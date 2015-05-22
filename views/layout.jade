@@ -1,14 +1,23 @@
 doctype html
 block variables
-html(class=splash ? "splash" : "")
+html(class=splash ? "splash" : "", ng-app='swApp')
 
 	head
+		base(href='/')
 		title SocialWords - #{pageTitle}
+
 		//link(rel='icon', href='/images/favicon.ico')
 
 		link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css')
 
 		link(rel='stylesheet', href='/stylesheets/sw.css')
+
+		script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular.min.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular-resource.min.js')
+		script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.3.9/angular-cookies.min.js')
+		script(src='js/sw-client.js')
+
+
 
 	body
 		.container
